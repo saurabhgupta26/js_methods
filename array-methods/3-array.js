@@ -14,8 +14,15 @@ var words = [
 
 // Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
 // (indexOf)
-
-
+```js
+var uniqueArray = words.reduce(function (acc, cV) {
+	if(acc.indexOf(cV) === -1) {
+  acc.push(cV);
+  }
+  return acc;
+}, [])
+console.log(uniqueArray);
+```
 
 var words2 = [
   'machine',
@@ -29,9 +36,12 @@ var words2 = [
 ];
 
 // Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
-
-
-
+```js
+function doesWordExist(words, checkWord) {
+  console.log(words.includes(checkWord));
+}
+doesWordExist(words, "bring");
+```
 
 var words3 = [
   'machine',
@@ -49,10 +59,12 @@ var words3 = [
 
 
 // Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
-
-
-
-
+```js
+function howManyTimes(words3, checkWord) {
+  return words3.filter(x =>(x === checkWord)).length;
+}
+howManyTimes(words3, "matter");
+```
 
 // Using the reduce() method, how would you sum up the population of every country except China?
 let data = [
@@ -73,7 +85,17 @@ let data = [
     pop: 263991379,
   }
 ]
-
+```js
+function populationSum(data) {
+  return data.reduce((acc, cV) => {
+    if (cV.country !== "China") {
+      acc += cV.pop;
+    }
+    return acc;
+  },0)
+}
+console.log(populationSum(data));
+```
 
 // Use reduce method and summorize the collection like
 // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
@@ -90,7 +112,19 @@ const fruitBasket = [
   'orange',
   'fig'
 ];
-
+```js
+function summorize(fruitBasket) {
+  return fruitBasket.reduce((acc, cV) => {
+    if (acc.hasOwnProperty(cV)) {
+      acc[cV]++
+    } else {
+      acc[cV] = 1;
+    }
+    return acc;
+  }, {})
+};
+console.log(summorize(fruitBasket));
+```
 
 
 // Bonus Question (Solve only if you have time)
